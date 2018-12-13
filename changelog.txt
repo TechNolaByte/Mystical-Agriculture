@@ -1,0 +1,52 @@
+--------------------1.0-------------------
+
+-added support for rainbow ore mod
+-added support for titanite mod
+-added support for bacon mod
+-added support for glooptest mod
+-added support for lapis mod
+-added support for exotic ores mod
+-added support for terumet
+-added inferium crop
+-added Fertilized essence
+-added infusion stone and master infusion stone
+-added prosperity essence, block, metal ingot, metal block, and metal nuggets
+-added inferium essence, block, metal ingot, metal block, coal, coal blocks, and metal nuggets
+-added Intermedium essence, block, metal ingot, metal block, coal, coal blocks, and metal nuggets
+-added Prudentium essence, block, metal ingot, metal block, coal, coal blocks, and metal nuggets
+-added Superium essence, block, metal ingot, metal block, coal, coal blocks, and metal nuggets
+-added Supremium essence, block, metal ingot, metal block, coal, coal blocks, and metal nuggets
+-added Insanium essence, block, metal ingot, metal block, coal, coal blocks, and metal nuggets
+-added dye crop. can be used to make all dyes and to duplicate dyes
+-added growth crystal, speeds up growth of magic crops planted on soil above this
+-added harvest crystal, auto harvests magic crops on it
+-added tech ore radar, finds nearby technic ores
+-added magically infused bonemeal, instantly grows mgic crops
+-added blank seed, used to craft seeds
+-added crop, seeds, and essence for diamond    
+-added crop, seeds, and essence for mese
+-added crop, seeds, and essence for tin
+-added crop, seeds, and essence for copper    
+-added crop, seeds, and essence for iron
+-added crop, seeds, and essence for gold
+-added crop, seeds, and essence for bronze
+-added crop, seeds, and essence for coal
+-added crop, seeds, and essence for bone  
+-added crop, seeds, and essence for water  
+-added crop, seeds, and essence for fire
+-added crop, seeds, and essence for rubber
+-added crop, seeds, and essence for stainless_steel 
+-added crop, seeds, and essence for chrome
+-added crop, seeds, and essence for brass
+-added crop, seeds, and essence for carbon_steel
+-added crop, seeds, and essence for sulfur
+-added crop, seeds, and essence for zinc
+-added crop, seeds, and essence for lead
+-added crop, seeds, and essence for all uranium fizzles
+-added crop, seeds, and essence for silver 
+-added crop, seeds, and essence for mithril
+-added crop, seeds, and essence for dirt
+-added crop, seeds, and essence for stone
+-added crop, seeds, and essence for wood
+-added crop, seeds, and essence for ice
+-added crop, seeds, and essence for nature

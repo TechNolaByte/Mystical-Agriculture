@@ -1,0 +1,11 @@
+mystical_agriculture.register_normal_ore_crop("akalin_ingot","glooptest:akalin_ingot","Akalin",2,4,mystical_agriculture.get_inv_image("glooptest:akalin_ingot")) 
+mystical_agriculture.register_normal_ore_crop("alatro_ingot","glooptest:alatro_ingot","Alatro",2,4,mystical_agriculture.get_inv_image("glooptest:alatro_ingot")) 
+mystical_agriculture.register_normal_ore_crop("arol_ingot","glooptest:arol_ingot","Arol",2,4,mystical_agriculture.get_inv_image("glooptest:arol_ingot")) 
+mystical_agriculture.register_normal_ore_crop("talinite_ingot","glooptest:talinite_ingot","Talinite",2,4,mystical_agriculture.get_inv_image("glooptest:talinite_ingot")) 
+mystical_agriculture.register_normal_ore_crop("amethyst_gem","glooptest:amethyst_gem","Amethyst",5,2,mystical_agriculture.get_inv_image("glooptest:amethyst_gem")) 
+mystical_agriculture.register_normal_ore_crop("emerald_gem","glooptest:emerald_gem","Emerald",5,2,mystical_agriculture.get_inv_image("glooptest:emerald_gem")) 
+mystical_agriculture.register_normal_ore_crop("ruby_gem","glooptest:ruby_gem","Ruby",5,2,mystical_agriculture.get_inv_image("glooptest:ruby_gem")) 
+mystical_agriculture.register_normal_ore_crop("topaz_gem","glooptest:topaz_gem","Topaz",5,2,mystical_agriculture.get_inv_image("glooptest:topaz_gem")) 
+mystical_agriculture.register_normal_ore_crop("sapphire_gem","glooptest:sapphire_gem","Sapphire",5,2,mystical_agriculture.get_inv_image("glooptest:sapphire_gem")) 
+mystical_agriculture.register_normal_ore_crop("kalite_lump","glooptest:kalite_lump","Kalite",2,6,mystical_agriculture.get_inv_image("glooptest:kalite_lump")) 
+

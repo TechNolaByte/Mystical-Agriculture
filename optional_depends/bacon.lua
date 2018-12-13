@@ -1,0 +1,2 @@
+mystical_agriculture.register_normal_ore_crop("raw_bacon","bacon:raw","Raw Bacon",2,8,mystical_agriculture.get_inv_image("bacon:raw")) 
+mystical_agriculture.register_normal_ore_crop("cooked_bacon","bacon:cooked","Cooked Bacon",2,6,mystical_agriculture.get_inv_image("bacon:cooked")) 

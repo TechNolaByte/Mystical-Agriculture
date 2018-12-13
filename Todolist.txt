@@ -1,0 +1,26 @@
+prosperity ore
+inferium ore
+seed reprocessor
+tinkering table
+soulium
+charms
+chunks
+tier seeds for crafting each plant
+support for more mods
+for each teir of plant essence:
+	axe
+	shovel
+	armor
+	sword
+	pick
+	shears
+	apples
+	hoe
+	fishing rod
+	sickle
+	furnaceses
+	arrows
+	sythe
+	watering can
+	paxels
+	

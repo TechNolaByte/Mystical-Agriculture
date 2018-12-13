@@ -1,0 +1,14 @@
+default
+farming
+moreores?
+skytest?
+technic?
+bonemeal?
+dye?
+terumet?
+lapis?
+bacon?
+exoticores?
+glooptest?
+titanite?
+rainbow_ore?
