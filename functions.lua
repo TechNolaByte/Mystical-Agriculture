@@ -400,30 +400,31 @@ minetest.register_craft({
 	 }
 })
 end
+--Add armor
 if minetest.get_modpath("3d_armor") then
 armor:register_armor("mystical_agriculture:"..name.."_chestplate", {
-        description = ("op Chestplate"),
+        description = ("MysticalAgriculture "..desc.." chestplate"),
         inventory_image = "mystical_agriculture_inv_chestplate.png",
         groups = {armor_torso=1, armor_heal=23, armor_use=1000, armor_fire=10},
         armor_groups = {fleshy=40},
         wear = 0,
     })
 armor:register_armor("mystical_agriculture:"..name.."boots", {
-        description = ("OP Boots"),
+        description = ("MysticalAgriculture "..desc.." boots"),
         inventory_image = "mystical_agriculture_inv_boots.png",
         groups = {armor_feet=1, armor_heal=10, armor_use=1000, armor_fire=10, physics_speed=1.3, physics_jump=.7},
         armor_groups = {fleshy=40},
         wear = 0,
     })
 armor:register_armor("mystical_agriculture:"..name.."leggings", {
-        description = ("OP Leggings"),
+        description = ("MysticalAgriculture "..desc.." leggings"),
         inventory_image = "mystical_agriculture_inv_leggings.png",
         groups = {armor_legs=1, armor_heal=15, armor_use=1000, armor_fire=10},
         armor_groups = {fleshy=20},
         wear = 0,
     })
 armor:register_armor("mystical_agriculture:"..name.."helmet", {
-        description = ("OP Anti Gravity Helmet"),
+        description = ("MysticalAgriculture "..desc.." helmet"),
         inventory_image = "mystical_agriculture_inv_helmet.png",
         groups = {armor_head=1, armor_heal=10, armor_use=1000, armor_fire=10, physics_speed=2, physics_jump=.7, physics_gravity=-.7},
         armor_groups = {fleshy=20},

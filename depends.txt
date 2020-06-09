@@ -12,3 +12,4 @@ exoticores?
 glooptest?
 titanite?
 rainbow_ore?
+3d_armor?
