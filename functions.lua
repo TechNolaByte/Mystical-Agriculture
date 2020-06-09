@@ -359,7 +359,6 @@ minetest.register_craft({
 			{"mystical_agriculture:"..name.."_coal_block"},	 
 		}
 	})
-end
 minetest.register_craft({
 		output = "mystical_agriculture:"..name.."_block",
 		recipe = {
@@ -399,7 +398,71 @@ minetest.register_craft({
 		recipe = {
 		   {"mystical_agriculture:"..name.."_ingot"},
 	 }
- })
+})
+end
+if minetest.get_modpath("3d_armor") then
+armor:register_armor("mystical_agriculture:"..name.."_chestplate", {
+        description = ("op Chestplate"),
+        inventory_image = "mystical_agriculture_inv_chestplate.png",
+        groups = {armor_torso=1, armor_heal=23, armor_use=1000, armor_fire=10},
+        armor_groups = {fleshy=40},
+        wear = 0,
+    })
+armor:register_armor("mystical_agriculture:"..name.."boots", {
+        description = ("OP Boots"),
+        inventory_image = "mystical_agriculture_inv_boots.png",
+        groups = {armor_feet=1, armor_heal=10, armor_use=1000, armor_fire=10, physics_speed=1.3, physics_jump=.7},
+        armor_groups = {fleshy=40},
+        wear = 0,
+    })
+armor:register_armor("mystical_agriculture:"..name.."leggings", {
+        description = ("OP Leggings"),
+        inventory_image = "mystical_agriculture_inv_leggings.png",
+        groups = {armor_legs=1, armor_heal=15, armor_use=1000, armor_fire=10},
+        armor_groups = {fleshy=20},
+        wear = 0,
+    })
+armor:register_armor("mystical_agriculture:"..name.."helmet", {
+        description = ("OP Anti Gravity Helmet"),
+        inventory_image = "mystical_agriculture_inv_helmet.png",
+        groups = {armor_head=1, armor_heal=10, armor_use=1000, armor_fire=10, physics_speed=2, physics_jump=.7, physics_gravity=-.7},
+        armor_groups = {fleshy=20},
+        wear = 0,
+    })
+
+minetest.register_craft({
+        output = "mystical_agriculture:"..name.."helmet",
+        recipe = {
+            {"mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot"},
+            {"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
+        }
+    })
+
+minetest.register_craft({
+	output = "mystical_agriculture:"..name.."chestplate",
+	recipe = {
+		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
+		{"mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot"},
+		{"mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot"},
+	}
+})
+
+minetest.register_craft({
+	output = "mystical_agriculture:"..name.."leggings",
+	recipe = {
+		{"mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot"},
+		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
+		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
+	}
+})
+
+minetest.register_craft({
+	output = "mystical_agriculture:"..name.."boots",
+	recipe = {
+		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
+		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
+	}
+})
 end
 
 mystical_agriculture.register_pressence_ore_crop = function(id,itemid,desc,essence,itemtex)	
@@ -468,7 +531,6 @@ minetest.register_abm({
 	end
 	end
 })
-end
 minetest.register_node("mystical_agriculture:"..id.."step_6", {
 	paramtype = "light",
 	walkable = false,
@@ -510,5 +572,7 @@ minetest.register_craft({
 			{itemid,itemid,itemid},
 		}
 	})
+end
+end
 end
 end
