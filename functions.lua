@@ -407,7 +407,7 @@ armor:register_armor("mystical_agriculture:"..name.."_chestplate", {
         inventory_image = "chestplate_"..name.."_inv.png",
 		texture = "chestplate_"..name..".png",
 		preview = "chestplate_"..name.."_preview.png",
-        groups = {armor_torso=1, armor_heal=23, armor_use=1000, armor_fire=10},
+        groups = {armor_torso=1, armor_heal=23, armor_use=1000*quality, armor_fire=10},
         armor_groups = {fleshy=40},
         wear = 0,
     })
@@ -416,7 +416,7 @@ armor:register_armor("mystical_agriculture:"..name.."boots", {
         inventory_image = "boots_"..name.."_inv.png",
 		texture = "boots_"..name..".png",
 		preview = "boots_"..name.."_preview.png",
-        groups = {armor_feet=1, armor_heal=10, armor_use=1000, armor_fire=10, physics_speed=1.3, physics_jump=.7},
+        groups = {armor_feet=1, armor_heal=10, armor_use=1000*quality, armor_fire=10, physics_speed=1.05,},
         armor_groups = {fleshy=40},
         wear = 0,
     })
@@ -425,7 +425,7 @@ armor:register_armor("mystical_agriculture:"..name.."leggings", {
         inventory_image = "leggings_"..name.."_inv.png",
 		texture = "leggings_"..name..".png",
 		preview = "leggings_"..name.."_preview.png",
-        groups = {armor_legs=1, armor_heal=15, armor_use=1000, armor_fire=10},
+        groups = {armor_legs=1, armor_heal=15, armor_use=1000*quality, armor_fire=10},
         armor_groups = {fleshy=20},
         wear = 0,
     })
@@ -434,7 +434,7 @@ armor:register_armor("mystical_agriculture:"..name.."helmet", {
         inventory_image = "helmet_"..name.."_inv.png",
 		texture = "helmet_"..name..".png",
 		preview = "helmet_"..name.."_preview.png",
-        groups = {armor_head=1, armor_heal=10, armor_use=1000, armor_fire=10, physics_speed=2, physics_jump=.7, physics_gravity=-.7},
+        groups = {armor_head=1, armor_heal=10*quality, armor_use=1000*quality, armor_fire=10},
         armor_groups = {fleshy=20},
         wear = 0,
     })
