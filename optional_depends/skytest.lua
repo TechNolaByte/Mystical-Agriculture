@@ -1,4 +1,4 @@
---[
+--[[
 minetest.register_craft({
         output = "mystical_agriculture:bone_seed",
         recipe = {
@@ -23,4 +23,4 @@ minetest.register_craft({
             {"mystical_agriculture:blank_seed","skytest:bonemeal","mystical_agriculture:blank_seed"},
         }
     })
-]--
+]]
