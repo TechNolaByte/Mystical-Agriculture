@@ -1,6 +1,0 @@
-ALL TEXTURES ,UNLESS OTHERWISE SPECIFIED, CAME FROM THE ORIGINAL MYSTICAL AGRICULTURE MOD FOR MC BY BlakeBr0 RELEASED UNDER THE MIT LICENSE 
-
-dye crop essence from ntm by cx384 released under WTFPL
-
-That out of the way, all else is MIT - meaning you can do anything you like except changing the license and you must give 
-me and all people in the license file some sort of agnolagment 
