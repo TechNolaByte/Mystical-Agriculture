@@ -3,7 +3,7 @@ The "grow-everything" mod.
 
 ## What does it do?
 This mod allows you to farm many resources that you otherwise would be unable to farm.  
-The purpose is to allow passive resource generation to reduce or replace the burden of mining, exploring, etc when you require a large amount of some resource.  
+The purpose is to allow passive resource generation to reduce or replace the burden of mining, exploring, etc.
 Additionally, the mod can eliminate the need for destructive terraforming—if you love your world too much to destroy it for the sake of gathering dirt, stone, ore, etc... or if you play Skyblock and simply don't have the option of mining terrain, then this mod is for you!
 
 ## How do I farm everything?
