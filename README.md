@@ -29,7 +29,7 @@ Then, simply use this function to register seeds, essence, crops, and crafting r
 Arguments - ``mystical_agriculture.register_normal_ore_crop(id,itemid,description,crafttype,craftamount,texture,optionforcraft6)``  
 Example - ``mystical_agriculture.register_normal_ore_crop("diamond","default:diamond","Diamond",6,2,mystical_agriculture.get_inv_image("default:diamond"),"default:dirt")``  
 Note that the argument "crafttype" determines what sort of recipe is needed to convert essence into the resource. It is a number from 0 to 6, here are the following shapes:  
-``	
+```	
 O == Essence
 
 1
@@ -58,18 +58,18 @@ OOO
  O
  
 6
-X = item in optionforcraft6 (last option in function)
- O 
-OXO
- O
-``  
+X = item in optionforcraft6 (last option in function)  
+ O   
+OXO  
+ O  
+``` 
   
 If you want to register a plant but want it to drop an existing item directly without any essence or crafting:  
 Arguments - ``mystical_agriculture.register_pressence_ore_crop(id,itemIdOfItemUsedToCraftSeeds,description,ItemIdOfItemToBeUsedAsEssence,texture)``  
 Example - ``mystical_agriculture.register_pressence_ore_crop("inferium","mystical_agriculture:inferium_essence","Inferium","mystical_agriculture:inferium_essence",mystical_agriculture.get_inv_image("mystical_agriculture:inferium_ingot"))``  
 
 ## Credits
-The mod idea, and most textures, came from the original Minecraft mod "Mystical Agriculture" developed by BlakeBr0—released under MIT license.
-TechNolaByte (Formerly known as RSLRedstonier) produced the minetest clone for his personal use before abandoning it.
-AFCMS helped out with the support for 3d armour mod.
-MidnightPhantom has so far helped to clean up the outdated portions of the project and bring it up to working condition again.
+The mod idea, and most textures, came from the original Minecraft mod "Mystical Agriculture" developed by BlakeBr0—released under MIT license.  
+TechNolaByte (Formerly known as RSLRedstonier) produced the minetest clone for his personal use before abandoning it.  
+AFCMS helped out with the support for 3d armour mod.  
+MidnightPhantom has so far helped to clean up the outdated portions of the project and bring it up to working condition again.  
