@@ -10,11 +10,12 @@ Additionally, the mod can eliminate the need for destructive terraforming—if y
 Each compatible resource has seeds, plants, and essence.  
 Place seeds on farmland (or special growth crystals) to grow plants which, when ripe and harvested, produce unique essence; collect and craft essences into the given resource. You can farm a lot of different resources, even diamonds :)
 
-## My avarice is unsatiated.
+## My avarice is unsatiated. How do I get MORE and FASTER?
 Crops will grow on normal farmland, but they grow slowly.  
 To speed things up, use magical fertilizer.  
 To invest in a permanent speed buff, place a growth crystal under the soil.  
 Still not enough? Place crops on harvest crystals instead of soil for them to automatically harvest mature crops. (Best paired with a technical mod that allows for the automatic collection of items.)
+STILL not enough? Don't forget rule #1 of farming: invest your output back into crafting more seeds for a larger farm.
 
 ## What does it look like?
 ![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma4.png?raw=true)
