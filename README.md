@@ -17,12 +17,12 @@ To invest in a permanent speed buff, place a growth crystal under the soil.
 Still not enough? Place crops on harvest crystals instead of soil for them to automatically harvest mature crops. (Best paired with a technical mod that allows for the automatic collection of items.)
 
 ## What does it look like?
-![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma4.PNG?raw=true)
-![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma5.PNG?raw=true)
-![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma1.PNG?raw=true)
-![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma2.PNG?raw=true)
-![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma3.PNG?raw=true)
-![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma6.PNG?raw=true)
+![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma4.png?raw=true)
+![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma5.png?raw=true)
+![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma1.png?raw=true)
+![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma2.png?raw=true)
+![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma3.png?raw=true)
+![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma6.png?raw=true)
 
 ## BUT MY FAVOURITE MOD/RESOURCE ISN'T SUPPORTED :( :(
 Do not be sad! It is quite easy to add new resources!  
