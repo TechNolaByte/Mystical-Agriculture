@@ -21,7 +21,6 @@ STILL not enough? Don't forget rule #1 of farming: invest your output back into 
 ![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma4.png?raw=true)
 ![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma5.png?raw=true)
 ![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma1.png?raw=true)
-![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma2.png?raw=true)
 ![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma3.png?raw=true)
 ![alt text](https://github.com/TechNolaByte/Mystical-Agriculture/blob/master/ma6.png?raw=true)
 
