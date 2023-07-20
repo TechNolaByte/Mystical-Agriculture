@@ -1,10 +1,10 @@
-mystical_agriculture.register_essence("inferium","Inferium",2,"default:mese_crystal_fragment",true)
-mystical_agriculture.register_essence("intermedium","Intermedium",3,"mystical_agriculture:inferium_essence",true)
-mystical_agriculture.register_essence("prudentium","Prudentium",4,"mystical_agriculture:intermedium_essence",true)
-mystical_agriculture.register_essence("superium","Superium",5,"mystical_agriculture:prudentium_essence",true)
-mystical_agriculture.register_essence("supremium","Supremium",6,"mystical_agriculture:superium_essence",true)
-mystical_agriculture.register_essence("insanium","Insanium",7,"mystical_agriculture:supremium_essence",true)
-mystical_agriculture.register_essence("prosperity","Prosperity",1,"mystical_agriculture:nil",false)
+mystical_agriculture.register_essence("inferium","Inferium",2,"#3F4B06","default:mese_crystal_fragment",true)
+mystical_agriculture.register_essence("intermedium","Intermedium",3,"#572A0C","mystical_agriculture:inferium_essence",true)
+mystical_agriculture.register_essence("prudentium","Prudentium",4,"#093A15","mystical_agriculture:intermedium_essence",true)
+mystical_agriculture.register_essence("superium","Superium",5,"#144568","mystical_agriculture:prudentium_essence",true)
+mystical_agriculture.register_essence("supremium","Supremium",6,"#5A0606","mystical_agriculture:superium_essence",true)
+mystical_agriculture.register_essence("insanium","Insanium",7,"#2A063C","mystical_agriculture:supremium_essence",true)
+mystical_agriculture.register_essence("prosperity","Prosperity",1,"#D6D7E3","mystical_agriculture:nil",false)
 
 
 --gems

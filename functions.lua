@@ -257,42 +257,44 @@ OXO
  O
 ]]--  
 
-mystical_agriculture.register_essence = function(name,desc,quality,below,coal)
+mystical_agriculture.register_essence = function(name,desc,quality,color,below,coal)
+	local colourize = "^[colorize:"..color..":128"
+
 minetest.register_craftitem("mystical_agriculture:"..name.."_essence", {
 	description = desc.." essence",
 	inventory_image = name.."_essence.png",
 })
 minetest.register_node("mystical_agriculture:"..name.."_block", {
 	description = desc.." block",
-	tiles = {name.."_block.png"},
+	tiles = {"essence_block.png"..colourize},
 	groups = {cracky=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 minetest.register_node("mystical_agriculture:"..name.."_ingot_block", {
 	description = desc.." metal block",
-	tiles = {name.."_ingot_block.png"},
+	tiles = {"ingot_block.png"..colourize},
 	groups = {cracky=1},
 	sounds = default.node_sound_metal_defaults(),
 })
 if coal == true then
 minetest.register_node("mystical_agriculture:"..name.."_coal_block", {
 	description = desc.." coal block",
-	tiles = {"coal_block_"..name..".png"},
+	tiles = {"coal_block.png"..colourize},
 	groups = {cracky=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 minetest.register_craftitem("mystical_agriculture:"..name.."_coal", {
 	description = desc.." coal",
-	inventory_image = "coal_"..name..".png",
+	inventory_image = "coal.png"..colourize,
 })
 end
 minetest.register_craftitem("mystical_agriculture:"..name.."_ingot", {
 	description = desc.." metal ingot",
-	inventory_image = name.."_ingot.png",
+	inventory_image = "ingot.png"..colourize,
 })
 minetest.register_craftitem("mystical_agriculture:"..name.."_nugget", {
 	description = desc.." metal nugget",
-	inventory_image = name.."_nugget.png",
+	inventory_image = "nugget.png"..colourize,
 })
 minetest.register_craft({
 		output = "mystical_agriculture:"..name.."_essence",
