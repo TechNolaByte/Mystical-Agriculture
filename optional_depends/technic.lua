@@ -50,14 +50,14 @@ minetest.register_node("mystical_agriculture:tech_ore_radar", {
         }
     })
 	
-mystical_agriculture.register_normal_ore_crop("rubber","technic:rubber","Rubber",3,8,mystical_agriculture.get_inv_image("technic:rubber")) 
-mystical_agriculture.register_normal_ore_crop("stainless_steel","technic:stainless_steel_ingot","Stainless Steel",3,2,mystical_agriculture.get_inv_image("technic:stainless_steel_ingot")) 
-mystical_agriculture.register_normal_ore_crop("chrome","technic:chromium_ingot","Chromium",3,4,mystical_agriculture.get_inv_image("technic:chromium_ingot")) 
-mystical_agriculture.register_normal_ore_crop("brass","technic:brass_ingot","Brass",3,4,mystical_agriculture.get_inv_image("technic:brass_ingot")) 
-mystical_agriculture.register_normal_ore_crop("carbon_steel","technic:carbon_steel_ingot","Carbon Steel",3,4,mystical_agriculture.get_inv_image("technic:carbon_steel_ingot")) 
-mystical_agriculture.register_normal_ore_crop("sulfur","technic:sulfur_lump","Sulfur",3,8,mystical_agriculture.get_inv_image("technic:sulfur_lump")) 
-mystical_agriculture.register_normal_ore_crop("zinc","technic:zinc_ingot","Zinc",3,4,mystical_agriculture.get_inv_image("technic:zinc_ingot")) 
-mystical_agriculture.register_normal_ore_crop("lead","technic:lead_ingot","Lead",3,6,mystical_agriculture.get_inv_image("technic:lead_ingot")) 
+mystical_agriculture.register_normal_ore_crop("rubber","technic:rubber","Rubber",3,8) 
+mystical_agriculture.register_normal_ore_crop("stainless_steel","technic:stainless_steel_ingot","Stainless Steel",3,2) 
+mystical_agriculture.register_normal_ore_crop("chrome","technic:chromium_ingot","Chromium",3,4) 
+mystical_agriculture.register_normal_ore_crop("brass","technic:brass_ingot","Brass",3,4) 
+mystical_agriculture.register_normal_ore_crop("carbon_steel","technic:carbon_steel_ingot","Carbon Steel",3,4) 
+mystical_agriculture.register_normal_ore_crop("sulfur","technic:sulfur_lump","Sulfur",3,8) 
+mystical_agriculture.register_normal_ore_crop("zinc","technic:zinc_ingot","Zinc",3,4) 
+mystical_agriculture.register_normal_ore_crop("lead","technic:lead_ingot","Lead",3,6) 
 for number = 0, 35 do
 mystical_agriculture.register_normal_ore_crop("uranium_"..number,"technic:uranium"..number.."_ingot","Uranium "..(number/10).." Fizzle",1,3,"uranium_0_essence.png")   
 end

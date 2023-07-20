@@ -33,189 +33,190 @@ mystical_agriculture.get_inv_image = function(name)
 	end
 	return t
 end
+
 mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset,amount,itemtex,craft6set)	
 
-if itemtex == nil then
-minetest.register_craftitem("mystical_agriculture:"..id.."_seed", {
-	description = desc.." Seeds",
-	inventory_image = id.."_seeds.png",
-	on_place = function(itemstack, placer, pointed_thing)
-		return farming.place_seed(itemstack, placer, pointed_thing, "mystical_agriculture:"..id.."step_1")
+	local seed_texture
+	local essence_texture
+	local mature_crop_texture
+	if itemtex == nil then
+		seed_texture = id.."_seeds.png"
+		essence_texture = id.."_essence.png"
+		mature_crop_texture = "crop_"..id..".png"
+	else
+		seed_texture = itemtex.."^seeds_mask.png^[makealpha:0,0,0"
+		essence_texture = "blank_essence.png^("..itemtex.."^essence_mask.png^[makealpha:0,0,0)"
+		mature_crop_texture = "crop6.png^("..itemtex..")" -- wip needs to be centered somehow
+		-- local mature_crop_texture = "crop6.png^("..itemtex.."^essence_mask.png^[makealpha:0,0,0)"
 	end
-})
-else
-minetest.register_craftitem("mystical_agriculture:"..id.."_seed", {
-	description = desc.." Seeds",
-	inventory_image = itemtex.."^seeds_mask.png^[makealpha:0,0,0",
-	on_place = function(itemstack, placer, pointed_thing)
-		return farming.place_seed(itemstack, placer, pointed_thing, "mystical_agriculture:"..id.."step_1")
-	end
-})
-end
 
-for n = 1,5 do
-minetest.register_node("mystical_agriculture:"..id.."step_"..n, {
-	paramtype = "light",
-	walkable = false,
-	drawtype = "plantlike",
-	tiles = {"crop"..n..".png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	selection_box = {
-	type = "fixed",
-	fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
-},
-	drop = "mystical_agriculture:"..id.."_seed",
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1,plant=1,growing=1},
-	sounds = default.node_sound_leaves_defaults(),
-	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
-		if itemstack:get_name() == "mystical_agriculture:magicly_infused_bonemeal" then
-			minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_6"})
-		itemstack:take_item(1)
-			return itemstack
-		 end
-	end,
-})
-minetest.register_abm({
-	nodenames = {"mystical_agriculture:"..id.."step_"..n},
-	interval = 3,
-	chance = 3,
-	action = function(pos, node)
-		local pos_under = {x=pos.x, y=pos.y-2, z=pos.z}
-		if minetest.get_node(pos_under).name == "mystical_agriculture:growth_crystal" then
-		minetest.set_node(pos, {name = "mystical_agriculture:"..id.."step_"..(n+1)})
+	minetest.register_craftitem("mystical_agriculture:"..id.."_seed", {
+		description = desc.." Seeds",
+		inventory_image = seed_texture,
+		on_place = function(itemstack, placer, pointed_thing)
+			return farming.place_seed(itemstack, placer, pointed_thing, "mystical_agriculture:"..id.."step_1")
+		end
+	})
+
+	minetest.register_craftitem("mystical_agriculture:"..id.."_item_essence", {
+		description = desc.." Essence",
+		inventory_image = essence_texture,
+	})
+
+	for n = 1,5 do
+		minetest.register_node("mystical_agriculture:"..id.."step_"..n, {
+			paramtype = "light",
+			walkable = false,
+			drawtype = "plantlike",
+			tiles = {"crop"..n..".png"},
+			paramtype = "light",
+			sunlight_propagates = true,
+			walkable = false,
+			buildable_to = true,
+			selection_box = {
+			type = "fixed",
+			fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+		},
+			drop = "mystical_agriculture:"..id.."_seed",
+			groups = {snappy=3, flammable=2, not_in_creative_inventory=1,plant=1,growing=1},
+			sounds = default.node_sound_leaves_defaults(),
+			on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+				if itemstack:get_name() == "mystical_agriculture:magicly_infused_bonemeal" then
+					minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_6"})
+					itemstack:take_item(1)
+					return itemstack
+				end
+			end,
+		})
+		minetest.register_abm({
+			nodenames = {"mystical_agriculture:"..id.."step_"..n},
+			interval = 3,
+			chance = 3,
+			action = function(pos, node)
+				local pos_under = {x=pos.x, y=pos.y-2, z=pos.z}
+				if minetest.get_node(pos_under).name == "mystical_agriculture:growth_crystal" then
+				minetest.set_node(pos, {name = "mystical_agriculture:"..id.."step_"..(n+1)})
+			end
+			end
+		})
+		minetest.register_abm({
+			nodenames = {"mystical_agriculture:"..id.."step_"..n},
+			interval = 10,
+			chance = 6,
+			action = function(pos, node)
+				local pos_under = {x=pos.x, y=pos.y-1, z=pos.z}
+				if minetest.get_node(pos_under).name == "farming:soil_wet" then
+				minetest.set_node(pos, {name = "mystical_agriculture:"..id.."step_"..(n+1)})
+			end
+			end
+		})
 	end
-	end
-})
-minetest.register_abm({
-	nodenames = {"mystical_agriculture:"..id.."step_"..n},
-	interval = 10,
-	chance = 6,
-	action = function(pos, node)
-		local pos_under = {x=pos.x, y=pos.y-1, z=pos.z}
-		if minetest.get_node(pos_under).name == "farming:soil_wet" then
-		minetest.set_node(pos, {name = "mystical_agriculture:"..id.."step_"..(n+1)})
-	end
-	end
-})
-end
-minetest.register_node("mystical_agriculture:"..id.."step_6", {
-	paramtype = "light",
-	walkable = false,
-	drawtype = "plantlike",
-	tiles = {"crop6.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
+
+	minetest.register_node("mystical_agriculture:"..id.."step_6", {
+		paramtype = "light",
+		walkable = false,
+		drawtype = "plantlike",
+		tiles = {mature_crop_texture},
+		paramtype = "light",
+		sunlight_propagates = true,
+		walkable = false,
+		buildable_to = true,
 		selection_box = farming.select,
-	drop = "mystical_agriculture:"..id.."_seed",
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1,plant=1,growing=1},
-	sounds = default.node_sound_leaves_defaults(),
-	on_rightclick = function(pos, node)
-		minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
-		pos.y = pos.y + 0.5
-		minetest.add_item(pos, "mystical_agriculture:"..id.."_item_essence")
-	end,
-})
-minetest.register_abm({
-	nodenames = {"mystical_agriculture:"..id.."step_6"},
-	interval = 1,
-	chance = 1,
-	action = function(pos, node)
-		local pos_under = {x=pos.x, y=pos.y-1, z=pos.z}
-		if minetest.get_node(pos_under).name == "mystical_agriculture:harvest_crystal" then
-		minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
-		pos.y = pos.y + 0.5
-		minetest.add_item(pos, "mystical_agriculture:"..id.."_item_essence")
-	end
-	end
-})
-if itemtex == nil then
-minetest.register_craftitem("mystical_agriculture:"..id.."_item_essence", {
-	description = desc.." Essence",
-	inventory_image = id.."_essence.png",
-})
-else
-minetest.register_craftitem("mystical_agriculture:"..id.."_item_essence", {
-	description = desc.." Essence",
-	inventory_image = "blank_essence.png^("..itemtex.."^essence_mask.png^[makealpha:0,0,0)",
-})
-end
+		drop = "mystical_agriculture:"..id.."_seed",
+		groups = {snappy=3, flammable=2, not_in_creative_inventory=1,plant=1,growing=1},
+		sounds = default.node_sound_leaves_defaults(),
+		on_rightclick = function(pos, node)
+			minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
+			pos.y = pos.y + 0.5
+			minetest.add_item(pos, "mystical_agriculture:"..id.."_item_essence")
+		end,
+	})
+	minetest.register_abm({
+		nodenames = {"mystical_agriculture:"..id.."step_6"},
+		interval = 1,
+		chance = 1,
+		action = function(pos, node)
+			local pos_under = {x=pos.x, y=pos.y-1, z=pos.z}
+			if minetest.get_node(pos_under).name == "mystical_agriculture:harvest_crystal" then
+			minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
+			pos.y = pos.y + 0.5
+			minetest.add_item(pos, "mystical_agriculture:"..id.."_item_essence")
+		end
+		end
+	})
 
 
-if craftset == 1 and amount ~= nil then
-minetest.register_craft({
-		output = itemid.." "..amount,
-		recipe = {
-			{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-			{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-			{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-		}
-	})
-end
-if craftset == 2 and amount ~= nil then
-minetest.register_craft({
-		output = itemid.." "..amount,
-		recipe = {
-			{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence",""},
-			{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence",""},
-			{"","",""},
-		}
-	})
-end
-if craftset == 3 and amount ~= nil then
-minetest.register_craft({
-		output = itemid.." "..amount,
-		recipe = {
-			{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-			{"mystical_agriculture:"..id.."_item_essence","","mystical_agriculture:"..id.."_item_essence"},
-			{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-		}
-	})
-end
-if craftset == 4 and amount ~= nil then
-minetest.register_craft({
-		output = itemid.." "..amount,
-		recipe = {
-			{"","mystical_agriculture:"..id.."_item_essence",""},
-			{"mystical_agriculture:"..id.."_item_essence","bucket:bucket_empty","mystical_agriculture:"..id.."_item_essence"},
-			{"","mystical_agriculture:"..id.."_item_essence",""},
-		}
-	})
-end
-if craftset == 5 and amount ~= nil then
-minetest.register_craft({
-		output = itemid.." "..amount,
-		recipe = {
-			{"","mystical_agriculture:"..id.."_item_essence",""},
-			{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-			{"","mystical_agriculture:"..id.."_item_essence",""},
-		}
-	})
-end
-if craftset == 6 and amount ~= nil and craft6set ~= nil then
-minetest.register_craft({
-		output = itemid.." "..amount,
-		recipe = {
-			{"","mystical_agriculture:"..id.."_item_essence",""},
-			{"mystical_agriculture:"..id.."_item_essence",craft6set,"mystical_agriculture:"..id.."_item_essence"},
-			{"","mystical_agriculture:"..id.."_item_essence",""},
-		}
-	})
-end
-if itemid ~= 0 then
-minetest.register_craft({
-		output = "mystical_agriculture:"..id.."_seed",
-		recipe = {
-			{itemid,itemid,itemid},
-			{itemid,"mystical_agriculture:blank_seed",itemid},
-			{itemid,itemid,itemid},
-		}
-	})
-end
+
+	if craftset == 1 and amount ~= nil then
+	minetest.register_craft({
+			output = itemid.." "..amount,
+			recipe = {
+				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
+				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
+				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
+			}
+		})
+	end
+	if craftset == 2 and amount ~= nil then
+	minetest.register_craft({
+			output = itemid.." "..amount,
+			recipe = {
+				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence",""},
+				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence",""},
+				{"","",""},
+			}
+		})
+	end
+	if craftset == 3 and amount ~= nil then
+	minetest.register_craft({
+			output = itemid.." "..amount,
+			recipe = {
+				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
+				{"mystical_agriculture:"..id.."_item_essence","","mystical_agriculture:"..id.."_item_essence"},
+				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
+			}
+		})
+	end
+	if craftset == 4 and amount ~= nil then
+	minetest.register_craft({
+			output = itemid.." "..amount,
+			recipe = {
+				{"","mystical_agriculture:"..id.."_item_essence",""},
+				{"mystical_agriculture:"..id.."_item_essence","bucket:bucket_empty","mystical_agriculture:"..id.."_item_essence"},
+				{"","mystical_agriculture:"..id.."_item_essence",""},
+			}
+		})
+	end
+	if craftset == 5 and amount ~= nil then
+	minetest.register_craft({
+			output = itemid.." "..amount,
+			recipe = {
+				{"","mystical_agriculture:"..id.."_item_essence",""},
+				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
+				{"","mystical_agriculture:"..id.."_item_essence",""},
+			}
+		})
+	end
+	if craftset == 6 and amount ~= nil and craft6set ~= nil then
+	minetest.register_craft({
+			output = itemid.." "..amount,
+			recipe = {
+				{"","mystical_agriculture:"..id.."_item_essence",""},
+				{"mystical_agriculture:"..id.."_item_essence",craft6set,"mystical_agriculture:"..id.."_item_essence"},
+				{"","mystical_agriculture:"..id.."_item_essence",""},
+			}
+		})
+	end
+	if itemid ~= 0 then
+	minetest.register_craft({
+			output = "mystical_agriculture:"..id.."_seed",
+			recipe = {
+				{itemid,itemid,itemid},
+				{itemid,"mystical_agriculture:blank_seed",itemid},
+				{itemid,itemid,itemid},
+			}
+		})
+	end
 end
 
 --mystical_agriculture.register_normal_ore_crop(id,itemid,desc,craftset,amount,itemtex,craft6set) --max options
@@ -359,6 +360,7 @@ minetest.register_craft({
 			{"mystical_agriculture:"..name.."_coal_block"},	 
 		}
 	})
+end
 minetest.register_craft({
 		output = "mystical_agriculture:"..name.."_block",
 		recipe = {
@@ -398,190 +400,120 @@ minetest.register_craft({
 		recipe = {
 		   {"mystical_agriculture:"..name.."_ingot"},
 	 }
-})
-end
---Add armor
-if minetest.get_modpath("3d_armor") then
-armor:register_armor("mystical_agriculture:"..name.."_chestplate", {
-        description = ("MysticalAgriculture "..desc.." chestplate"),
-        inventory_image = "chestplate_"..name.."_inv.png",
-		texture = "chestplate_"..name..".png",
-		preview = "chestplate_"..name.."_preview.png",
-        groups = {armor_torso=1, armor_heal=23, armor_use=1000*quality, armor_fire=10},
-        armor_groups = {fleshy=40},
-        wear = 0,
-    })
-armor:register_armor("mystical_agriculture:"..name.."boots", {
-        description = ("MysticalAgriculture "..desc.." boots"),
-        inventory_image = "boots_"..name.."_inv.png",
-		texture = "boots_"..name..".png",
-		preview = "boots_"..name.."_preview.png",
-        groups = {armor_feet=1, armor_heal=10, armor_use=1000*quality, armor_fire=10, physics_speed=1.05,},
-        armor_groups = {fleshy=40},
-        wear = 0,
-    })
-armor:register_armor("mystical_agriculture:"..name.."leggings", {
-        description = ("MysticalAgriculture "..desc.." leggings"),
-        inventory_image = "leggings_"..name.."_inv.png",
-		texture = "leggings_"..name..".png",
-		preview = "leggings_"..name.."_preview.png",
-        groups = {armor_legs=1, armor_heal=15, armor_use=1000*quality, armor_fire=10},
-        armor_groups = {fleshy=20},
-        wear = 0,
-    })
-armor:register_armor("mystical_agriculture:"..name.."helmet", {
-        description = ("MysticalAgriculture "..desc.." helmet"),
-        inventory_image = "helmet_"..name.."_inv.png",
-		texture = "helmet_"..name..".png",
-		preview = "helmet_"..name.."_preview.png",
-        groups = {armor_head=1, armor_heal=10*quality, armor_use=1000*quality, armor_fire=10},
-        armor_groups = {fleshy=20},
-        wear = 0,
-    })
-
-minetest.register_craft({
-        output = "mystical_agriculture:"..name.."helmet",
-        recipe = {
-            {"mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot"},
-            {"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
-        }
-    })
-
-minetest.register_craft({
-	output = "mystical_agriculture:"..name.."chestplate",
-	recipe = {
-		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
-		{"mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot"},
-		{"mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot"},
-	}
-})
-
-minetest.register_craft({
-	output = "mystical_agriculture:"..name.."leggings",
-	recipe = {
-		{"mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot", "mystical_agriculture:"..name.."_ingot"},
-		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
-		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
-	}
-})
-
-minetest.register_craft({
-	output = "mystical_agriculture:"..name.."boots",
-	recipe = {
-		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
-		{"mystical_agriculture:"..name.."_ingot", "", "mystical_agriculture:"..name.."_ingot"},
-	}
-})
+ })
 end
 
-mystical_agriculture.register_pressence_ore_crop = function(id,itemid,desc,essence,itemtex)	
-if itemtex == nil then
-minetest.register_craftitem("mystical_agriculture:"..id.."_seed", {
-	description = desc.." Seeds",
-	inventory_image = id.."_seeds.png",
-	on_place = function(itemstack, placer, pointed_thing)
-		return farming.place_seed(itemstack, placer, pointed_thing, "mystical_agriculture:"..id.."step_1")
-	end
-})
-else
-minetest.register_craftitem("mystical_agriculture:"..id.."_seed", {
-	description = desc.." Seeds",
-	inventory_image = itemtex.."^seeds_mask.png^[makealpha:0,0,0",
-	on_place = function(itemstack, placer, pointed_thing)
-		return farming.place_seed(itemstack, placer, pointed_thing, "mystical_agriculture:"..id.."step_1")
-	end
-})
-end
+mystical_agriculture.register_pressence_ore_crop = function(id,itemid,desc,essence,itemtex)
 
-for n = 1,5 do
-minetest.register_node("mystical_agriculture:"..id.."step_"..n, {
-	paramtype = "light",
-	walkable = false,
-	drawtype = "plantlike",
-	tiles = {"crop"..n..".png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	selection_box = {
-	type = "fixed",
-	fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
-},
-	drop = "mystical_agriculture:"..id.."_seed",
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1,plant=1,growing=1},
-	sounds = default.node_sound_leaves_defaults(),
-	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
-		if itemstack:get_name() == "mystical_agriculture:magicly_infused_bonemeal" then
-			minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_6"})
-		itemstack:take_item(1)
-			return itemstack
-		 end
-	end,
-})
-minetest.register_abm({
-	nodenames = {"mystical_agriculture:"..id.."step_"..n},
-	interval = 3,
-	chance = 3,
-	action = function(pos, node)
-		local pos_under = {x=pos.x, y=pos.y-2, z=pos.z}
-		if minetest.get_node(pos_under).name == "mystical_agriculture:growth_crystal" then
-		minetest.set_node(pos, {name = "mystical_agriculture:"..id.."step_"..(n+1)})
+	local seed_texture
+	local mature_crop_texture
+	if itemtex == nil then
+		seed_texture = id.."_seeds.png"
+		mature_crop_texture = "crop_"..id..".png"
+	else
+		seed_texture = itemtex.."^seeds_mask.png^[makealpha:0,0,0"
+		mature_crop_texture = "crop6.png^("..itemtex..")"
+		-- local mature_crop_texture = "crop6.png^("..itemtex.."^essence_mask.png^[makealpha:0,0,0)"
 	end
-	end
-})
-minetest.register_abm({
-	nodenames = {"mystical_agriculture:"..id.."step_"..n},
-	interval = 10,
-	chance = 6,
-	action = function(pos, node)
-		local pos_under = {x=pos.x, y=pos.y-1, z=pos.z}
-		if minetest.get_node(pos_under).name == "farming:soil_wet" then
-		minetest.set_node(pos, {name = "mystical_agriculture:"..id.."step_"..(n+1)})
-	end
-	end
-})
-minetest.register_node("mystical_agriculture:"..id.."step_6", {
-	paramtype = "light",
-	walkable = false,
-	drawtype = "plantlike",
-	tiles = {"crop6.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-		selection_box = farming.select,
-	drop = "mystical_agriculture:"..id.."_seed",
-	groups = {snappy=3, flammable=2, not_in_creative_inventory=1,plant=1,growing=1},
-	sounds = default.node_sound_leaves_defaults(),
-	on_rightclick = function(pos, node)
-		minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
-		pos.y = pos.y + 0.5
-		minetest.add_item(pos, essence)
-	end,
-})
-minetest.register_abm({
-	nodenames = {"mystical_agriculture:"..id.."step_6"},
-	interval = 1,
-	chance = 1,
-	action = function(pos, node)
-		local pos_under = {x=pos.x, y=pos.y-1, z=pos.z}
-		if minetest.get_node(pos_under).name == "mystical_agriculture:harvest_crystal" then
-		minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
-		pos.y = pos.y + 0.5
-		minetest.add_item(pos, essence)
-	end
-	end
-})
-if itemid ~= 0 then
-minetest.register_craft({
-		output = "mystical_agriculture:"..id.."_seed",
-		recipe = {
-			{itemid,itemid,itemid},
-			{itemid,"mystical_agriculture:blank_seed",itemid},
-			{itemid,itemid,itemid},
-		}
+
+	minetest.register_craftitem("mystical_agriculture:"..id.."_seed", {
+		description = desc.." Seeds",
+		inventory_image = seed_texture,
+		on_place = function(itemstack, placer, pointed_thing)
+			return farming.place_seed(itemstack, placer, pointed_thing, "mystical_agriculture:"..id.."step_1")
+		end
 	})
-end
-end
-end
+
+	for n = 1,5 do
+		minetest.register_node("mystical_agriculture:"..id.."step_"..n, {
+			paramtype = "light",
+			walkable = false,
+			drawtype = "plantlike",
+			tiles = {"crop"..n..".png"},
+			paramtype = "light",
+			sunlight_propagates = true,
+			walkable = false,
+			buildable_to = true,
+			selection_box = {
+				type = "fixed",
+				fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+			},
+			drop = "mystical_agriculture:"..id.."_seed",
+			groups = {snappy=3, flammable=2, not_in_creative_inventory=1,plant=1,growing=1},
+			sounds = default.node_sound_leaves_defaults(),
+			on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+				if itemstack:get_name() == "mystical_agriculture:magicly_infused_bonemeal" then
+					minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_6"})
+					itemstack:take_item(1)
+					return itemstack
+				end
+			end,
+		})
+		minetest.register_abm({
+			nodenames = {"mystical_agriculture:"..id.."step_"..n},
+			interval = 3,
+			chance = 3,
+			action = function(pos, node)
+				local pos_under = {x=pos.x, y=pos.y-2, z=pos.z}
+				if minetest.get_node(pos_under).name == "mystical_agriculture:growth_crystal" then
+				minetest.set_node(pos, {name = "mystical_agriculture:"..id.."step_"..(n+1)})
+			end
+			end
+		})
+		minetest.register_abm({
+			nodenames = {"mystical_agriculture:"..id.."step_"..n},
+			interval = 10,
+			chance = 6,
+			action = function(pos, node)
+				local pos_under = {x=pos.x, y=pos.y-1, z=pos.z}
+				if minetest.get_node(pos_under).name == "farming:soil_wet" then
+				minetest.set_node(pos, {name = "mystical_agriculture:"..id.."step_"..(n+1)})
+			end
+			end
+		})
+	end
+	
+	minetest.register_node("mystical_agriculture:"..id.."step_6", {
+		paramtype = "light",
+		walkable = false,
+		drawtype = "plantlike",
+		tiles = {mature_crop_texture},
+		paramtype = "light",
+		sunlight_propagates = true,
+		walkable = false,
+		buildable_to = true,
+		selection_box = farming.select,
+		drop = "mystical_agriculture:"..id.."_seed",
+		groups = {snappy=3, flammable=2, not_in_creative_inventory=1,plant=1,growing=1},
+		sounds = default.node_sound_leaves_defaults(),
+		on_rightclick = function(pos, node)
+			minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
+			pos.y = pos.y + 0.5
+			minetest.add_item(pos, essence)
+		end,
+	})
+	minetest.register_abm({
+		nodenames = {"mystical_agriculture:"..id.."step_6"},
+		interval = 1,
+		chance = 1,
+		action = function(pos, node)
+			local pos_under = {x=pos.x, y=pos.y-1, z=pos.z}
+			if minetest.get_node(pos_under).name == "mystical_agriculture:harvest_crystal" then
+			minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
+			pos.y = pos.y + 0.5
+			minetest.add_item(pos, essence)
+		end
+		end
+	})
+
+	if itemid ~= 0 then
+		minetest.register_craft({
+			output = "mystical_agriculture:"..id.."_seed",
+			recipe = {
+				{itemid,itemid,itemid},
+				{itemid,"mystical_agriculture:blank_seed",itemid},
+				{itemid,itemid,itemid},
+			}
+		})
+	end
 end

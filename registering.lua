@@ -8,15 +8,15 @@ mystical_agriculture.register_essence("prosperity","Prosperity",1,"mystical_agri
 
 
 --gems
-mystical_agriculture.register_normal_ore_crop("diamond","default:diamond","Diamond",5,3,mystical_agriculture.get_inv_image("default:diamond"))	
-mystical_agriculture.register_normal_ore_crop("mese","default:mese_crystal","Mese",5,2,mystical_agriculture.get_inv_image("default:mese_crystal")) 
+mystical_agriculture.register_normal_ore_crop("diamond","default:diamond","Diamond",5,3)	
+mystical_agriculture.register_normal_ore_crop("mese","default:mese_crystal","Mese",5,2) 
 
 --basic metals
-mystical_agriculture.register_normal_ore_crop("tin","default:tin_ingot","Tin",2,4,mystical_agriculture.get_inv_image("default:tin_ingot"))	 
-mystical_agriculture.register_normal_ore_crop("copper","default:copper_ingot","Copper",2,4,mystical_agriculture.get_inv_image("default:copper_ingot"))	
-mystical_agriculture.register_normal_ore_crop("iron","default:steel_ingot","Wrought Iron",2,4,mystical_agriculture.get_inv_image("default:steel_ingot"))	
-mystical_agriculture.register_normal_ore_crop("gold","default:gold_ingot","Gold",2,2,mystical_agriculture.get_inv_image("default:gold_ingot"))   
-mystical_agriculture.register_normal_ore_crop("bronze","default:bronze_ingot","Bronze",2,8,mystical_agriculture.get_inv_image("default:bronze_ingot"))	 
+mystical_agriculture.register_normal_ore_crop("tin","default:tin_ingot","Tin",2,4)	 
+mystical_agriculture.register_normal_ore_crop("copper","default:copper_ingot","Copper",2,4)	
+mystical_agriculture.register_normal_ore_crop("iron","default:steel_ingot","Wrought Iron",2,4)	
+mystical_agriculture.register_normal_ore_crop("gold","default:gold_ingot","Gold",2,2)   
+mystical_agriculture.register_normal_ore_crop("bronze","default:bronze_ingot","Bronze",2,8)	 
 
 --basic misc
 mystical_agriculture.register_normal_ore_crop("coal","default:coal_lump","Coal",2,4)
@@ -34,4 +34,4 @@ mystical_agriculture.register_normal_ore_crop("ice","default:ice","Ice",0,0)
 mystical_agriculture.register_normal_ore_crop("nature",0,"Nature",0,0) 
 
 --essences
-mystical_agriculture.register_pressence_ore_crop("inferium","mystical_agriculture:inferium_essence","Inferium","mystical_agriculture:inferium_essence",mystical_agriculture.get_inv_image("mystical_agriculture:inferium_ingot"))
+mystical_agriculture.register_pressence_ore_crop("inferium","mystical_agriculture:inferium_essence","Inferium","mystical_agriculture:inferium_essence")
