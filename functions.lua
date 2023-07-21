@@ -1,30 +1,5 @@
 mystical_agriculture = {}
---[[
-local function get_inv_image(name)
-	local t = default_texture
-	local d = minetest.registered_items[name]
-	if name ~= "air" and d then
-		if d.inventory_image and #d.inventory_image > 0 then
-			t = d.inventory_image
-		else
-			local c = #d.tiles
-			local x = {}
-			for i, v in ipairs(d.tiles) do
-				if type(v) == "table" then
-					x[i] = v.name
-				else
-					x[i] = v
-				end
-				i = i + 1
-			end
-			if not x[3] then x[3] = x[1] end
-			if not x[4] then x[4] = x[3] end
-			t = minetest.inventorycube(x[1], x[3], x[4])
-		end
-	end
-	return t
-end
-]]--
+
 mystical_agriculture.get_inv_image = function(name)
 	local t = default_texture
 	local d = minetest.registered_items[name]
@@ -58,7 +33,7 @@ mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset
 		end
 	})
 
-	minetest.register_craftitem("mystical_agriculture:"..id.."_item_essence", {
+	minetest.register_craftitem("mystical_agriculture:"..id.."_essence", {
 		description = desc.." Essence",
 		inventory_image = essence_texture,
 	})
@@ -128,7 +103,7 @@ mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset
 		on_rightclick = function(pos, node)
 			minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
 			pos.y = pos.y + 0.5
-			minetest.add_item(pos, "mystical_agriculture:"..id.."_item_essence")
+			minetest.add_item(pos, "mystical_agriculture:"..id.."_essence")
 		end,
 	})
 	minetest.register_abm({
@@ -140,7 +115,7 @@ mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset
 			if minetest.get_node(pos_under).name == "mystical_agriculture:harvest_crystal" then
 			minetest.set_node(pos, {name="mystical_agriculture:"..id.."step_1"})
 			pos.y = pos.y + 0.5
-			minetest.add_item(pos, "mystical_agriculture:"..id.."_item_essence")
+			minetest.add_item(pos, "mystical_agriculture:"..id.."_essence")
 		end
 		end
 	})
@@ -151,9 +126,9 @@ mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset
 	minetest.register_craft({
 			output = itemid.." "..amount,
 			recipe = {
-				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
+				{"mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence"},
+				{"mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence"},
+				{"mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence"},
 			}
 		})
 	end
@@ -161,8 +136,8 @@ mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset
 	minetest.register_craft({
 			output = itemid.." "..amount,
 			recipe = {
-				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence",""},
-				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence",""},
+				{"mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence",""},
+				{"mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence",""},
 				{"","",""},
 			}
 		})
@@ -171,9 +146,9 @@ mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset
 	minetest.register_craft({
 			output = itemid.." "..amount,
 			recipe = {
-				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-				{"mystical_agriculture:"..id.."_item_essence","","mystical_agriculture:"..id.."_item_essence"},
-				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
+				{"mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence"},
+				{"mystical_agriculture:"..id.."_essence","","mystical_agriculture:"..id.."_essence"},
+				{"mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence"},
 			}
 		})
 	end
@@ -181,9 +156,9 @@ mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset
 	minetest.register_craft({
 			output = itemid.." "..amount,
 			recipe = {
-				{"","mystical_agriculture:"..id.."_item_essence",""},
-				{"mystical_agriculture:"..id.."_item_essence","bucket:bucket_empty","mystical_agriculture:"..id.."_item_essence"},
-				{"","mystical_agriculture:"..id.."_item_essence",""},
+				{"","mystical_agriculture:"..id.."_essence",""},
+				{"mystical_agriculture:"..id.."_essence","bucket:bucket_empty","mystical_agriculture:"..id.."_essence"},
+				{"","mystical_agriculture:"..id.."_essence",""},
 			}
 		})
 	end
@@ -191,9 +166,9 @@ mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset
 	minetest.register_craft({
 			output = itemid.." "..amount,
 			recipe = {
-				{"","mystical_agriculture:"..id.."_item_essence",""},
-				{"mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence","mystical_agriculture:"..id.."_item_essence"},
-				{"","mystical_agriculture:"..id.."_item_essence",""},
+				{"","mystical_agriculture:"..id.."_essence",""},
+				{"mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence","mystical_agriculture:"..id.."_essence"},
+				{"","mystical_agriculture:"..id.."_essence",""},
 			}
 		})
 	end
@@ -201,9 +176,9 @@ mystical_agriculture.register_normal_ore_crop = function(id,itemid,desc,craftset
 	minetest.register_craft({
 			output = itemid.." "..amount,
 			recipe = {
-				{"","mystical_agriculture:"..id.."_item_essence",""},
-				{"mystical_agriculture:"..id.."_item_essence",craft6set,"mystical_agriculture:"..id.."_item_essence"},
-				{"","mystical_agriculture:"..id.."_item_essence",""},
+				{"","mystical_agriculture:"..id.."_essence",""},
+				{"mystical_agriculture:"..id.."_essence",craft6set,"mystical_agriculture:"..id.."_essence"},
+				{"","mystical_agriculture:"..id.."_essence",""},
 			}
 		})
 	end

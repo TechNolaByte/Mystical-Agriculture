@@ -36,9 +36,9 @@ minetest.register_node("mystical_agriculture:tech_ore_radar", {
 	minetest.register_craft({
         output = "mystical_agriculture:tech_ore_radar",
         recipe = {
-            {"technic:uranium0_ingot","mystical_agriculture:chrome_item_essence","technic:uranium0_ingot"},
-            {"technic:uranium0_ingot","mystical_agriculture:chrome_item_essence","technic:uranium0_ingot"},
-            {"technic:uranium0_ingot","mystical_agriculture:chrome_item_essence","technic:uranium0_ingot"},
+            {"technic:uranium0_ingot","mystical_agriculture:chrome_essence","technic:uranium0_ingot"},
+            {"technic:uranium0_ingot","mystical_agriculture:chrome_essence","technic:uranium0_ingot"},
+            {"technic:uranium0_ingot","mystical_agriculture:chrome_essence","technic:uranium0_ingot"},
         }
     })
 		minetest.register_craft({
