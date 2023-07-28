@@ -72,7 +72,4 @@ Arguments - ``mystical_agriculture.register_pressence_ore_crop(id,itemIdOfItemUs
 Example - ``mystical_agriculture.register_pressence_ore_crop("inferium","mystical_agriculture:inferium_essence","Inferium","mystical_agriculture:inferium_essence",mystical_agriculture.get_inv_image("mystical_agriculture:inferium_ingot"))``  
 
 ## Credits
-The mod idea, and most textures, came from the original Minecraft mod "Mystical Agriculture" developed by BlakeBr0—released under MIT license.  
-TechNolaByte (Formerly known as RSLRedstonier) produced the minetest clone for his personal use before abandoning it.  
-AFCMS helped out with the support for 3d armour mod.  
-MidnightPhantom has so far helped to clean up the outdated portions of the project and bring it up to working condition again.  
+See the included file (license.txt).
