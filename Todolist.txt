@@ -1,5 +1,3 @@
-prosperity ore
-inferium ore
 seed reprocessor
 tinkering table
 soulium

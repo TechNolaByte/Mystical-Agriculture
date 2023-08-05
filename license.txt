@@ -1,17 +1,20 @@
-All content originally produced for this package is released with MIT. See the following details for content that was taken from elsewhere:
+All content originally produced for this package is released with MIT.
+See the following details for content that was taken from elsewhere:
 
 ----- Idea
-The main concept came directly from the original Minecraft mod "Mystical Agriculture" developed by BlakeBr0 (released under MIT license).  
+(MIT) The main concept came directly from the original Minecraft mod "Mystical Agriculture" developed by BlakeBr0.  
 
 ----- Code
-TechNolaByte (Formerly known as RSLRedstonier) built the majority of the code
-AFCMS added support for 3d_armour mod
-MidnightPhantom contributed some fine tweaking 
+(MIT) TechNolaByte (Formerly known as RSLRedstonier) built the majority of the code
+(MIT) AFCMS added support for 3d_armour mod
+(MIT) MidnightPhantom contributed some fine tweaking 
+(GPLv3+) Watering cans derived from "Waterican" mod by gravgun https://forum.minetest.net/viewtopic.php?f=9&t=13518
 
 ----- Visual
-Plant, seed, and essence textures derived from BlakeBr0's original work (released under MIT)
-Additional plant, seed, and essence textures are generated on the fly from the texture of the crafted resource. These are not shipped as a part of the mod.
-Armour textures derived from stock 3d_armour textures (released under LGPL-2.1-only)
+(MIT) Plant, seed, and essence textures derived from BlakeBr0's original work (released under MIT)
+(N/A) Additional plant, seed, and essence textures are generated on the fly from the texture of the crafted resource. These are not shipped as a part of the mod.
+(LGPL-2.1-only) Armour textures derived from stock 3d_armour textures
+
 Some textures are derived from Minetest Game's "default" mod:
   coal.png by Gambit (CC BY-SA 3.0)
   coal_block.png by Zeg9 (CC BY-SA 3.0)

@@ -1,12 +1,15 @@
-mystical_agriculture.register_normal_ore_crop("dye","Group:dye","Dye",0,0)
+mystical_agriculture.register_ore_crop("dye", "Dye", {
+    resource = "group:dye"
+})
 
 local dye_recipies = function(dye) 
-minetest.register_craft({
+    minetest.register_craft({
 		type = "shapeless",
 		output = dye.." 2",
 		recipe = {"mystical_agriculture:dye_essence",dye},
-})
+    })
 end
+
 dye_recipies("dye:white")
 dye_recipies("dye:grey")
 dye_recipies("dye:dark_grey")

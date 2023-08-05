@@ -1,5 +1,25 @@
-mystical_agriculture.register_normal_ore_crop("edoylerite_bar","exoticores:edoylerite_bar","Edoylerite",5,2,mystical_agriculture.get_inv_image("exoticores:edoylerite_bar")) 
-mystical_agriculture.register_normal_ore_crop("cobaltominite_bar","exoticores:cobaltominite_bar","Cobaltominite",5,2,mystical_agriculture.get_inv_image("exoticores:cobaltominite_bar")) 
-mystical_agriculture.register_normal_ore_crop("nevadaite_bar","exoticores:nevadaite_bar","Nevadaite",5,2,mystical_agriculture.get_inv_image("exoticores:nevadaite_bar")) 
-mystical_agriculture.register_normal_ore_crop("sideronatrite_bar","exoticores:sideronatrite_bar","Sideronatrite",5,2,mystical_agriculture.get_inv_image("exoticores:sideronatrite_bar")) 
-mystical_agriculture.register_normal_ore_crop("lonsdaleite_crystal","exoticores:lonsdaleite_crystal","Lonsdaleite",5,1,mystical_agriculture.get_inv_image("exoticores:lonsdaleite_crystal")) 
+mystical_agriculture.register_ore_crop("edoylerite_bar", "Edoylerite", {
+    resource = "exoticores:edoylerite_bar",
+    generate_textures_from_resource_texture = mystical_agriculture.get_inv_image("exoticores:edoylerite_bar"),
+    craft = { type = 4, amount = 2}
+})
+mystical_agriculture.register_ore_crop("cobaltominite_bar", "Cobaltominite", {
+    resource = "exoticores:cobaltominite_bar",
+    generate_textures_from_resource_texture = mystical_agriculture.get_inv_image("exoticores:cobaltominite_bar"),
+    craft = { type = 4, amount = 2}
+})
+mystical_agriculture.register_ore_crop("nevadaite_bar", "Nevadaite", {
+    resource = "exoticores:nevadaite_bar",
+    generate_textures_from_resource_texture = mystical_agriculture.get_inv_image("exoticores:nevadaite_bar"),
+    craft = { type = 4, amount = 2}
+})
+mystical_agriculture.register_ore_crop("sideronatrite_bar", "Sideronatrite", {
+    resource = "exoticores:sideronatrite_bar",
+    generate_textures_from_resource_texture = mystical_agriculture.get_inv_image("exoticores:sideronatrite_bar"),
+    craft = { type = 4, amount = 2}
+})
+mystical_agriculture.register_ore_crop("lonsdaleite_crystal", "Lonsdaleite", {
+    resource = "exoticores:lonsdaleite_crystal",
+    generate_textures_from_resource_texture = mystical_agriculture.get_inv_image("exoticores:lonsdaleite_crystal"),
+    craft = { type = 4, amount = 1}
+})

@@ -1,2 +1,8 @@
-mystical_agriculture.register_normal_ore_crop("silver","moreores:silver_ingot","Silver",3,4) 
-mystical_agriculture.register_normal_ore_crop("mithril","moreores:mithril_ingot","Mithril",3,2) 
+mystical_agriculture.register_ore_crop("silver", "Silver", {
+    resource = "moreores:silver_ingot",
+    craft = { type = 3, amount = 4}
+})
+mystical_agriculture.register_ore_crop("mithril", "Mithril", {
+    resource = "moreores:mithril_ingot",
+    craft = { type = 3, amount = 2}
+})

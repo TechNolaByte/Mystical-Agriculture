@@ -1,2 +1,10 @@
-mystical_agriculture.register_normal_ore_crop("raw_bacon","bacon:raw","Raw Bacon",2,8,mystical_agriculture.get_inv_image("bacon:raw")) 
-mystical_agriculture.register_normal_ore_crop("cooked_bacon","bacon:cooked","Cooked Bacon",2,6,mystical_agriculture.get_inv_image("bacon:cooked")) 
+mystical_agriculture.register_ore_crop("raw_bacon", "Raw Bacon", {
+    resource = "bacon:raw",
+    generate_textures_from_resource_texture = mystical_agriculture.get_inv_image("bacon:raw"),
+    craft = { type = 2, amount = 8}
+})
+mystical_agriculture.register_ore_crop("cooked_bacon", "Cooked Bacon", {
+    resource = "bacon:cooked",
+    generate_textures_from_resource_texture = mystical_agriculture.get_inv_image("bacon:cooked"),
+    craft = { type = 2, amount = 6}
+})
