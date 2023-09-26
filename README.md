@@ -1,3 +1,5 @@
+[![ContentDB](https://content.minetest.net/packages/TechNolaByte/mystical_agriculture/shields/title/)](https://content.minetest.net/packages/TechNolaByte/mystical_agriculture/)
+
 # Mystical Agriculture (For Minetest)
 The "grow-everything" mod.
 
