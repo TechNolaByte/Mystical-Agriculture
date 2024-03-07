@@ -92,4 +92,13 @@ if minetest.get_modpath("bucket") then
         resource = "bucket:bucket_lava",
         craft = { type = 5, amount = 1, center_item = "bucket:bucket_empty"}
     })
+elseif minetest.get_modpath("mesecraft_bucket") then 
+    mystical_agriculture.register_ore_crop("water","Water",{
+        resource = "mesecraft_bucket:bucket_water",
+        craft = { type = 5, amount = 1, center_item = "mesecraft_bucket:bucket_empty"}
+    })
+    mystical_agriculture.register_ore_crop("fire","Fire",{
+        resource = "mesecraft_bucket:bucket_lava",
+        craft = { type = 5, amount = 1, center_item = "mesecraft_bucket:bucket_empty"}
+    })
 end
