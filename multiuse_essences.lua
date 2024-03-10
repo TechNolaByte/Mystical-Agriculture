@@ -1,5 +1,7 @@
 local R = dofile(minetest.get_modpath("mystical_agriculture") .. "/crafting_helper.lua")
 
+minetest.registered_nodes["default:ice"]["groups"]["ice"]=1
+
 mystical_agriculture.register_ore_crop("dirt","Earth",{ resource = "group:soil" })
 mystical_agriculture.register_ore_crop("stone","Rock",{ resource = "group:stone" })
 mystical_agriculture.register_ore_crop("wood","Wood",{ resource = "group:tree" })
