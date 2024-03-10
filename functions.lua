@@ -121,7 +121,7 @@ mystical_agriculture.register_ore_crop = function(id, name, options)
 		_yields_essence = essence_itemid,
 		on_rightclick = harvest,
 		on_construct = function(pos, node)
-			if minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == "mystical_agriculture:supreme_harvest_crystal" then
+			if minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == "mystical_agriculture:supreme_harvest_crystal" or minetest.get_node({x=pos.x, y=pos.y-2, z=pos.z}).name == "mystical_agriculture:supreme_harvest_crystal" then
 				harvest(pos, minetest.get_node(pos))
 			end
 		end,
@@ -132,7 +132,7 @@ mystical_agriculture.register_ore_crop = function(id, name, options)
 		interval = 1,
 		chance = 1,
 		action = function(pos, node)
-			if minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == "mystical_agriculture:harvest_crystal" then
+			if minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == "mystical_agriculture:harvest_crystal" or minetest.get_node({x=pos.x, y=pos.y-2, z=pos.z}).name == "mystical_agriculture:harvest_crystal" then
 				harvest(pos, node)
 			end
 		end
